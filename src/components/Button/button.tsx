@@ -22,7 +22,7 @@ interface BaseButtonProps {
   href?: string;
 }
 
-type ButtonProps = BaseButtonProps &
+export type ButtonProps = BaseButtonProps &
   React.ButtonHTMLAttributes<HTMLElement> &
   React.AnchorHTMLAttributes<HTMLElement>;
 
