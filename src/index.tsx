@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 import Menu from "./components/Menu/menu";
+import SubMenu from "./components/Menu/submenu";
 import MenuItem from "./components/Menu/menuitem";
 import "./styles/index.scss";
 
@@ -25,10 +26,15 @@ ReactDOM.render(
       <Button btnType={ButtonType.Danger} btnSize={ButtonSize.Large}>
         primary large
       </Button>
-      <Menu mode="vertical">
+      <Menu>
         <MenuItem>0</MenuItem>
         <MenuItem>1</MenuItem>
-        <MenuItem>2</MenuItem>
+        <SubMenu title="2">
+          <MenuItem>2-0</MenuItem>
+          <MenuItem>2-1</MenuItem>
+          <MenuItem>2-2</MenuItem>
+        </SubMenu>
+        <MenuItem>3</MenuItem>
       </Menu>
     </>
   </React.StrictMode>,

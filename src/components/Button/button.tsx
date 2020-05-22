@@ -1,5 +1,5 @@
 import React from "react";
-import ClassNames from "classnames";
+import classnames from "classnames";
 
 export enum ButtonType {
   Primary = "primary",
@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     href,
     ...restProps
   } = props;
-  const classNames = ClassNames("btn", className, {
+  const classNames = classnames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${btnSize}`]: btnSize,
     disable: btnType === ButtonType.Link && disable,

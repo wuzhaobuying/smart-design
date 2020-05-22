@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, useState, createContext } from "react";
-import classNames from "classnames";
+import classnames from "classnames";
 import { menuItemProps } from "./menuitem";
+import { subMenuProps } from "./submenu";
 export type menuMode = "vertical" | "horizontal";
 
 interface baseMenuProps {
@@ -22,12 +23,14 @@ const Menu: React.FC<menuProps> = (props) => {
   const { className, defaultIndex, mode, children, ...restProps } = props;
   const [index, setIndex] = useState(defaultIndex);
   const context = { menuIndex: index, setIndex };
-  const classnames = classNames("menu", className, {
+  const classNames = classnames("menu", className, {
     [`menu-${mode}`]: mode,
   });
   const renderChildren = () => {
     return React.Children.map(children, (item, index) => {
-      const child = item as React.FunctionComponentElement<menuItemProps>;
+      const child = item as React.FunctionComponentElement<
+        menuItemProps | subMenuProps
+      >;
       if (
         child.type.displayName === "MenuItem" ||
         child.type.displayName === "SubMenu"
@@ -38,7 +41,7 @@ const Menu: React.FC<menuProps> = (props) => {
   };
   return (
     <menuContext.Provider value={context}>
-      <ul className={classnames} {...restProps}>
+      <ul className={classNames} {...restProps}>
         {renderChildren()}
       </ul>
     </menuContext.Provider>
