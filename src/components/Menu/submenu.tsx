@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import { menuItemProps } from "./menuitem";
+import Icon from "../Icon/icon";
 
 interface baseSubMenuProps {
   index?: string;
   className?: string;
-  title?: string;
+  title: string;
 }
 
 export type subMenuProps = baseSubMenuProps &
@@ -14,9 +15,14 @@ export type subMenuProps = baseSubMenuProps &
 const SubMenu: React.FC<subMenuProps> = (props) => {
   const [opened, setOpened] = useState(false);
   const { index, className, children, title, ...restProps } = props;
-  const classNames = classnames("submenu", className, {
-    opened,
-  });
+  const classNames = classnames("submenu-item menu-item", className);
+  const onMouseEnter = () => {
+    setOpened(!opened);
+  };
+  const onMouseLeave = () => {
+    setOpened(!opened);
+  };
+
   const renderChildren = () => {
     return React.Children.map(children, (item, subIndex) => {
       if (
@@ -25,7 +31,7 @@ const SubMenu: React.FC<subMenuProps> = (props) => {
       ) {
         return React.cloneElement(
           item as React.FunctionComponentElement<menuItemProps>,
-          { index: `${index}-${subIndex}`, className: "submenu-item" }
+          { index: `${index}-${subIndex}` }
         );
       } else {
         console.error("SubMenu子组件里只能有MenuItem组件");
@@ -36,10 +42,15 @@ const SubMenu: React.FC<subMenuProps> = (props) => {
     <li
       className={classNames}
       {...restProps}
-      onClick={() => setOpened(!opened)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
-      <div className="submenu-title">{title}</div>
-      <ul>{renderChildren()}</ul>
+      <div className="submenu-title">
+        {title} <Icon className="arrow-icon" icon="angle-down"></Icon>
+      </div>
+      <ul className={opened ? "submenu opened" : "submenu closed"}>
+        {renderChildren()}
+      </ul>
     </li>
   );
 };

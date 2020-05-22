@@ -4,6 +4,7 @@ import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import SubMenu from "./components/Menu/submenu";
 import MenuItem from "./components/Menu/menuitem";
+import Icon from "./components/Icon/icon";
 import "./styles/index.scss";
 
 ReactDOM.render(
@@ -26,7 +27,7 @@ ReactDOM.render(
       <Button btnType={ButtonType.Danger} btnSize={ButtonSize.Large}>
         primary large
       </Button>
-      <Menu>
+      <Menu mode="vertical">
         <MenuItem>0</MenuItem>
         <MenuItem>1</MenuItem>
         <SubMenu title="2">
@@ -36,6 +37,7 @@ ReactDOM.render(
         </SubMenu>
         <MenuItem>3</MenuItem>
       </Menu>
+      <Icon icon="coffee"></Icon>
     </>
   </React.StrictMode>,
   document.getElementById("root")

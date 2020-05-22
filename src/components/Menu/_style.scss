@@ -78,10 +78,16 @@
     position: absolute;
     background: $white;
     z-index: 100;
-    top: calc(100% + 8px);
+    top: calc(100%);
     left: 0;
     border: $menu-border-width solid $menu-border-color;
     box-shadow: $submenu-box-shadow;
+    &.opened {
+      display: block;
+    }
+    &.closed {
+      display: none;
+    }
   }
 }
 .menu-vertical {
@@ -96,5 +102,11 @@
       border-bottom: 0px;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
+  }
+  .opened {
+    display: block;
+  }
+  .closed {
+    display: none;
   }
 }
