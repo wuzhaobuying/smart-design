@@ -1,2 +1,0 @@
-(this["webpackJsonpsmart-design"]=this["webpackJsonpsmart-design"]||[]).push([[0],{3:function(e,t,n){e.exports=n(4)},4:function(e,t,n){"use strict";n.r(t);var r=n(0),s=n.n(r),a=n(2),c=n.n(a);n(9);c.a.render(s.a.createElement(s.a.StrictMode,null,s.a.createElement("div",null)),document.getElementById("root"))},9:function(e,t,n){}},[[3,1,2]]]);
-//# sourceMappingURL=main.fa41e9be.chunk.js.map
