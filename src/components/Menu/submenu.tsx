@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import { menuItemProps } from "./menuitem";
 import Icon from "../Icon/icon";
+import Transition from "../Transition/transition";
 
 interface baseSubMenuProps {
   index?: string;
@@ -48,9 +49,11 @@ const SubMenu: React.FC<subMenuProps> = (props) => {
       <div className="submenu-title">
         {title} <Icon className="arrow-icon" icon="angle-down"></Icon>
       </div>
-      <ul className={opened ? "submenu opened" : "submenu closed"}>
-        {renderChildren()}
-      </ul>
+      <Transition timeout={300} animation="zoom-in-top" in={opened}>
+        <ul className={opened ? "submenu opened" : "submenu closed"}>
+          {renderChildren()}
+        </ul>
+      </Transition>
     </li>
   );
 };

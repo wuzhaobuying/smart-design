@@ -27,7 +27,7 @@ ReactDOM.render(
       <Button btnType={ButtonType.Danger} btnSize={ButtonSize.Large}>
         primary large
       </Button>
-      <Menu mode="vertical">
+      <Menu>
         <MenuItem>0</MenuItem>
         <MenuItem>1</MenuItem>
         <SubMenu title="2">
