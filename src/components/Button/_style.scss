@@ -82,5 +82,6 @@
   &.disabled {
     color: $btn-link-disabled-color;
     pointer-events: none;
+    cursor: not-allowed;
   }
 }

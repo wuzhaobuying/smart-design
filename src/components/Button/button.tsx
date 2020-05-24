@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 import classnames from "classnames";
 
 export enum ButtonType {
@@ -14,6 +14,8 @@ export enum ButtonSize {
 }
 
 interface BaseButtonProps {
+  /** button的类型
+   */
   btnType?: ButtonType;
   btnSize?: ButtonSize;
   className?: string;
@@ -23,10 +25,10 @@ interface BaseButtonProps {
 }
 
 export type ButtonProps = BaseButtonProps &
-  React.ButtonHTMLAttributes<HTMLElement> &
-  React.AnchorHTMLAttributes<HTMLElement>;
+  ButtonHTMLAttributes<HTMLElement> &
+  AnchorHTMLAttributes<HTMLElement>;
 
-const Button: React.FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = (props) => {
   const {
     btnType,
     btnSize,
