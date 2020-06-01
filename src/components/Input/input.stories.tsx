@@ -1,6 +1,6 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import Input, { inputSize } from "./input";
+import Input from "./input";
 
 export default {
   component: Input,

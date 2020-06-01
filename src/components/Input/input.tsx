@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, ChangeEvent } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classnames from "classnames";
 import Icon from "../Icon/icon";
@@ -6,7 +6,8 @@ import Icon from "../Icon/icon";
 export type inputSize = "lg" | "sm";
 export type addSize = string | React.ReactElement;
 
-interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface IInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   inputSize?: inputSize;
   inputIcon?: IconProp;
@@ -25,6 +26,7 @@ const Input: React.FC<IInputProps> = (props) => {
     prepend,
     ...restProps
   } = props;
+  const [value, setValue] = useState<string>("");
   const classNames = classnames("smart-input-wrapper", className, {
     [`input-size-${inputSize}`]: inputSize,
     "is-disabled": disabled,
@@ -41,7 +43,15 @@ const Input: React.FC<IInputProps> = (props) => {
           <Icon icon={inputIcon} title={`title-${inputIcon}`} />
         </div>
       )}
-      <input className="smart-input-inner" disabled={disabled} {...restProps} />
+      <input
+        className="smart-input-inner"
+        value={value}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setValue(e.target.value)
+        }
+        disabled={disabled}
+        {...restProps}
+      />
       {!!append && <div className="smart-input-group-append">{append}</div>}
     </div>
   );
