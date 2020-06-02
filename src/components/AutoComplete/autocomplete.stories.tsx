@@ -1,5 +1,6 @@
 import React from "react";
-import AutoComplete from "./autocomplete";
+import AutoComplete, { DataSourceType } from "./autocomplete";
+import { action } from "@storybook/addon-actions";
 
 export default {
   component: AutoComplete,
@@ -22,8 +23,15 @@ const handleFetch = (query: string) => {
     });
 };
 
+const onSelect = (item: DataSourceType) => {
+  console.log(item.value);
+};
+
 export const autoComplete = () => (
   <>
-    <AutoComplete fetchSuggestion={handleFetch}></AutoComplete>
+    <AutoComplete
+      fetchSuggestions={handleFetch}
+      onSelect={onSelect}
+    ></AutoComplete>
   </>
 );
