@@ -4,19 +4,19 @@ import { menuContext } from "./menu";
 export interface baseMenuItemProps {
   className?: string;
   index?: string;
-  disable?: boolean;
+  disabled?: boolean;
 }
 
 export type menuItemProps = baseMenuItemProps &
   React.LiHTMLAttributes<HTMLElement>;
 
 const MenuItem: React.FC<menuItemProps> = (props) => {
-  const { className, index, disable, children, ...restProps } = props;
+  const { className, index, disabled, children, ...restProps } = props;
   const context = useContext(menuContext);
   const { menuIndex, setIndex } = context;
   const classNames = classnames("menu-item", className, {
-    disabled: disable,
-    actived: index === menuIndex && !disable,
+    disabled: disabled,
+    actived: index === menuIndex && !disabled,
   });
   const clickItem = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ const MenuItem: React.FC<menuItemProps> = (props) => {
 MenuItem.displayName = "MenuItem";
 
 MenuItem.defaultProps = {
-  disable: false,
+  disabled: false,
 };
 
 export default MenuItem;
