@@ -1,6 +1,5 @@
 import React from "react";
 import AutoComplete, { DataSourceType } from "./autocomplete";
-import { action } from "@storybook/addon-actions";
 
 export default {
   component: AutoComplete,
