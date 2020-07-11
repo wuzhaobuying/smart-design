@@ -27,7 +27,6 @@ export interface AutoCompleteProps extends Omit<IInputProps, "onSelect"> {
 
 export const AutoComplete: FC<AutoCompleteProps> = (props) => {
 	const { fetchSuggestions, onSelect, renderOption, ...restProps } = props;
-
 	const [inputValue, setInputValue] = useState("");
 	const [suggestions, setSugestions] = useState<DataSourceType[]>([]);
 	const [loading, setLoading] = useState(false);
